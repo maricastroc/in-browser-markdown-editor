@@ -17,7 +17,7 @@ export function Sidebar() {
     useContext(SettingsContext)
   const { documents } = useContext(ActionsContext)
 
-  console.log(darkTheme)
+  console.log(documents)
 
   return (
     <DocumentsContainer hidden={!openSidebar}>

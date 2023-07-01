@@ -37,24 +37,48 @@ interface ActionsContextProviderProps {
 export function ActionsContextProvider({
   children,
 }: ActionsContextProviderProps) {
-  const [documents, setDocuments] = useState<any[]>([])
+  const [documents, setDocuments] = useState(() => {
+    const storedDocuments = localStorage.getItem('documents')
+    if (typeof storedDocuments === 'string') {
+      return JSON.parse(storedDocuments)
+    } else {
+      return defaultDocuments
+    }
+  })
+
   const [activeDocument, setActiveDocument] = useState<NewDocumentProps>()
 
   useEffect(() => {
-    const storedDocuments = localStorage.getItem('documents')
-    const parsedDocuments = storedDocuments
-      ? JSON.parse(storedDocuments)
-      : defaultDocuments
-    setDocuments(parsedDocuments)
+    try {
+      const storedDocuments = localStorage.getItem('documents')
+      const parsedDocuments = storedDocuments
+        ? JSON.parse(storedDocuments)
+        : defaultDocuments
+      setDocuments(parsedDocuments)
+      console.log(parsedDocuments)
+    } catch (error) {
+      console.error('Error parsing documents:', error)
+      setDocuments(defaultDocuments)
+    }
   }, [])
 
   useEffect(() => {
-    const storedActiveDocument = localStorage.getItem('activeDocument')
-    const parsedActiveDocument = storedActiveDocument
-      ? JSON.parse(storedActiveDocument)
-      : defaultDocuments[0]
-    setActiveDocument(parsedActiveDocument)
+    try {
+      const storedActiveDocument = localStorage.getItem('activeDocument')
+      const parsedActiveDocument = storedActiveDocument
+        ? JSON.parse(storedActiveDocument)
+        : defaultDocuments[0]
+      setActiveDocument(parsedActiveDocument)
+    } catch (error) {
+      console.error('Error parsing active document:', error)
+      setActiveDocument(defaultDocuments[0])
+    }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('documents', JSON.stringify(documents))
+    localStorage.setItem('activeDocument', JSON.stringify(activeDocument))
+  }, [documents, activeDocument])
 
   // Activated on clicking "New Document" in Sidebar component
   const createDocument = () => {
@@ -82,7 +106,10 @@ export function ActionsContextProvider({
 
     setActiveDocument(newDocument)
 
-    setDocuments((existingDocuments) => [...existingDocuments, newDocument])
+    setDocuments((existingDocuments: NewDocumentProps[]) => [
+      ...existingDocuments,
+      newDocument,
+    ])
   }
 
   // Activated on "onChange" effect in markdown editor in Home component
@@ -97,8 +124,8 @@ export function ActionsContextProvider({
 
   // Actived on clicking "Save Changes" button in Header component
   const saveDocument = () => {
-    setDocuments((existingDocuments) => {
-      return existingDocuments.map((document) => {
+    setDocuments((existingDocuments: NewDocumentProps[]) => {
+      return existingDocuments.map((document: NewDocumentProps) => {
         if (document.id === activeDocument!.id) {
           return {
             ...document,
@@ -114,7 +141,7 @@ export function ActionsContextProvider({
   // Activated on clicking delete icon in Header component and confirming in modal
   const deleteDocument = () => {
     const existingDocuments = documents.filter(
-      (document) => document.id !== activeDocument!.id,
+      (document: NewDocumentProps) => document.id !== activeDocument!.id,
     )
     setDocuments(existingDocuments)
     existingDocuments.length === 0
@@ -124,7 +151,9 @@ export function ActionsContextProvider({
 
   // Activated on clicking any document listed in the Sidebar component
   const changeActiveDocument = (id: string) => {
-    const selectedDocument = documents.find((document) => document.id === id)
+    const selectedDocument = documents.find(
+      (document: NewDocumentProps) => document.id === id,
+    )
     setActiveDocument(selectedDocument)
   }
 

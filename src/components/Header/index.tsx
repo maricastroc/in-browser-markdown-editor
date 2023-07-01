@@ -8,12 +8,17 @@ import {
   SaveButton,
 } from './styles'
 import { SettingsContext } from '../../contexts/SettingsContext'
-import { useContext } from 'react'
+import { ChangeEvent, useContext } from 'react'
 import { ActionsContext } from '../../contexts/ActionsContext'
 
 export function Header() {
   const { handleSetOpenSidebar, openSidebar } = useContext(SettingsContext)
-  const { activeDocument } = useContext(ActionsContext)
+  const { activeDocument, saveDocument, onDocumentNameChange } =
+    useContext(ActionsContext)
+
+  function handleDocumentNameChange(ev: ChangeEvent<HTMLInputElement>) {
+    onDocumentNameChange(ev)
+  }
 
   return (
     <HeaderContainer>
@@ -30,12 +35,15 @@ export function Header() {
         <File />
         <div>
           <label htmlFor="">Document Name</label>
-          <input value={activeDocument?.name} />
+          <input
+            value={activeDocument?.name}
+            onChange={handleDocumentNameChange}
+          />
         </div>
       </FileContainer>
       <IconsContainer>
         <Trash className="trash" />
-        <SaveButton>
+        <SaveButton onClick={() => saveDocument()}>
           <FloppyDisk />
         </SaveButton>
       </IconsContainer>
