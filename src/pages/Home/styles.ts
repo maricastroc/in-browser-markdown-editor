@@ -5,6 +5,8 @@ export const HomeContainer = styled.header`
   min-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme['base-1000']};
+  overflow-x: hidden;
+  align-items: stretch;
 `
 
 export const EditArea = styled.div`

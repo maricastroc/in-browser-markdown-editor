@@ -17,7 +17,7 @@ const BaseButton = styled.button`
 
   svg {
     font-size: 28px;
-    color: ${(props) => props.theme['base-100']};
+    color: ${(props) => props.theme['base-font']};
   }
 
   &:focus {
@@ -40,10 +40,26 @@ export const FileContainer = styled.div`
 
   svg {
     font-size: 20px;
+    color: ${(props) => props.theme['base-font']};
   }
 
-  p {
+  label {
+    font-size: 0.8rem;
+    color: ${(props) => props.theme['base-500']};
+  }
+
+  input {
     font-size: 0.94rem;
+    background-color: ${(props) => props.theme['base-800']};
+    border: none;
+    width: 7rem;
+    color: ${(props) => props.theme['base-font']};
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
   }
 `
 
@@ -70,6 +86,6 @@ export const SaveButton = styled.button`
 
   svg {
     font-size: 22px;
-    color: ${(props) => props.theme['base-100']};
+    color: ${(props) => props.theme['base-font']};
   }
 `

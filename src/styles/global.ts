@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme['base-1000']}; //why?
-    color: ${(props) => props.theme['base-100']}; //why?
+    color: ${(props) => props.theme['base-font']};
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }

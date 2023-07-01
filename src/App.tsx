@@ -1,15 +1,32 @@
+import { useContext } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
-import { MarkdownContextProvider } from './contexts/MarkdownContext'
+import {
+  SettingsContext,
+  SettingsContextProvider,
+} from './contexts/SettingsContext'
 import { Home } from './pages/Home'
+import { ActionsContextProvider } from './contexts/ActionsContext'
+import { lightTheme } from './styles/themes/light'
 
 export function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <MarkdownContextProvider>
+    <SettingsContextProvider>
+      <InnerApp />
+    </SettingsContextProvider>
+  )
+}
+
+function InnerApp() {
+  const { darkTheme } = useContext(SettingsContext)
+  console.log(darkTheme)
+
+  return (
+    <ThemeProvider theme={darkTheme ? defaultTheme : lightTheme}>
+      <ActionsContextProvider>
         <Home />
-      </MarkdownContextProvider>
+      </ActionsContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   )

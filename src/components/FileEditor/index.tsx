@@ -1,27 +1,27 @@
 import { ConverterContainer, TextContainer } from './styles'
-import { useState, ChangeEvent, useContext } from 'react'
-import data from '../../documents/data'
+import { ChangeEvent, useContext } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { MarkdownContext } from '../../contexts/MarkdownContext'
+import { SettingsContext } from '../../contexts/SettingsContext'
+import { ActionsContext } from '../../contexts/ActionsContext'
 
 export function FileEditor() {
-  const [text, setText] = useState(data[0].content)
-  const { preview } = useContext(MarkdownContext)
+  const { preview, handleCloseSidebar } = useContext(SettingsContext)
+  const { activeDocument, onDocumentContentChange } = useContext(ActionsContext)
 
-  function handleSetText(ev: ChangeEvent<HTMLTextAreaElement>) {
-    setText(ev.target.value)
+  function handleChangeActiveDocument(ev: ChangeEvent<HTMLTextAreaElement>) {
+    onDocumentContentChange(ev)
   }
 
   return (
-    <TextContainer>
-      {preview ? (
+    <TextContainer onClick={() => handleCloseSidebar()}>
+      {preview && activeDocument?.content !== 'undefined' ? (
         <ConverterContainer>
-          <ReactMarkdown>{text}</ReactMarkdown>
+          <ReactMarkdown>{activeDocument!.content}</ReactMarkdown>
         </ConverterContainer>
       ) : (
         <textarea
-          value={text}
-          onChange={handleSetText}
+          value={activeDocument?.content}
+          onChange={handleChangeActiveDocument}
           spellCheck={false}
         ></textarea>
       )}

@@ -14,10 +14,13 @@ export const TextContainer = styled.div`
     font-family: 'Roboto Mono', serif;
     resize: none;
     background-color: ${(props) => props.theme['base-1000']};
-    width: 100%;
     border: none;
     height: 100vh;
     line-height: 170%;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
 
     &:focus {
       box-shadow: none;
@@ -27,6 +30,7 @@ export const TextContainer = styled.div`
 
 export const ConverterContainer = styled.div`
   h1 {
+    color: ${(props) => props.theme['base-100']};
     font-family: 'Roboto Slab', serif;
     font-size: 2rem;
     line-height: 140%;
@@ -101,7 +105,7 @@ export const ConverterContainer = styled.div`
 
   blockquote {
     margin-top: 1.25rem;
-    background-color: ${(props) => props.theme['base-800']};
+    background-color: ${(props) => props.theme['base-quote']};
     padding: 1.5rem;
     border-radius: 4px;
     border-left: solid 5px ${(props) => props.theme['orange-500']};

@@ -2,12 +2,12 @@ import { FileEditor } from '../../components/FileEditor'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { PreviewBar } from '../../components/PreviewBar'
-import { MarkdownContext } from '../../contexts/MarkdownContext'
+import { SettingsContext } from '../../contexts/SettingsContext'
 import { EditArea, HomeContainer } from './styles'
 import { useContext } from 'react'
 
 export function Home() {
-  const { openSidebar } = useContext(MarkdownContext)
+  const { openSidebar } = useContext(SettingsContext)
   return (
     <HomeContainer>
       <Sidebar />

@@ -9,13 +9,14 @@ export const PreviewBarContainer = styled.div`
   background-color: ${(props) => props.theme['base-900']};
 
   p {
-    color: ${(props) => props.theme['base-400']};
+    color: ${(props) => props.theme['base-500']};
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.875rem;
   }
 
   svg {
+    color: ${(props) => props.theme['base-500']};
     font-size: 25px;
   }
 `
