@@ -8,18 +8,29 @@ export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme['base-800']};
 `
 
-export const HamburgerMenu = styled.button`
+const BaseButton = styled.button`
   width: 3.5rem;
   height: 3.5rem;
   border: none;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme['base-700']};
 
   svg {
     font-size: 28px;
     color: ${(props) => props.theme['base-100']};
   }
+
+  &:focus {
+    box-shadow: none;
+  }
+`
+
+export const OpenSidebar = styled(BaseButton)`
+  background-color: ${(props) => props.theme['base-700']};
+`
+
+export const CloseSidebar = styled(BaseButton)`
+  background-color: ${(props) => props.theme['orange-500']};
 `
 
 export const FileContainer = styled.div`

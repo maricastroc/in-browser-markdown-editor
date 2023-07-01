@@ -1,18 +1,28 @@
-import { List, File, Trash, FloppyDisk } from 'phosphor-react'
+import { List, File, Trash, FloppyDisk, X } from 'phosphor-react'
 import {
   FileContainer,
-  HamburgerMenu,
+  OpenSidebar,
+  CloseSidebar,
   HeaderContainer,
   IconsContainer,
   SaveButton,
 } from './styles'
+import { MarkdownContext } from '../../contexts/MarkdownContext'
+import { useContext } from 'react'
 
 export function Header() {
+  const { handleSetOpenSidebar, openSidebar } = useContext(MarkdownContext)
   return (
     <HeaderContainer>
-      <HamburgerMenu>
-        <List />
-      </HamburgerMenu>
+      {openSidebar ? (
+        <CloseSidebar onClick={() => handleSetOpenSidebar()}>
+          <X />
+        </CloseSidebar>
+      ) : (
+        <OpenSidebar onClick={() => handleSetOpenSidebar()}>
+          <List />
+        </OpenSidebar>
+      )}
       <FileContainer>
         <File />
         <p>welcome.md</p>

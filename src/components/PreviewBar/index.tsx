@@ -4,10 +4,10 @@ import { MarkdownContext } from '../../contexts/MarkdownContext'
 import { useContext } from 'react'
 
 export function PreviewBar() {
-  const { handleSetPreview } = useContext(MarkdownContext)
+  const { handleSetPreview, preview } = useContext(MarkdownContext)
   return (
     <PreviewBarContainer>
-      <p>Markdown</p>
+      <p>{preview ? 'Preview' : 'Markdown'}</p>
       <Eye onClick={() => handleSetPreview()} />
     </PreviewBarContainer>
   )

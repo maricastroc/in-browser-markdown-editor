@@ -1,6 +1,6 @@
 import { ConverterContainer, TextContainer } from './styles'
 import { useState, ChangeEvent, useContext } from 'react'
-import data from '../../documents/data.json'
+import data from '../../documents/data'
 import ReactMarkdown from 'react-markdown'
 import { MarkdownContext } from '../../contexts/MarkdownContext'
 
