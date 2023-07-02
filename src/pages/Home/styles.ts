@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   display: flex;
-  min-height: 100%;
   width: 100%;
   background-color: ${(props) => props.theme['primary-bg']};
   align-items: stretch;
@@ -13,6 +12,7 @@ export const HomeContent = styled.div`
   flex-direction: column;
   min-width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
 `
 
 export const HeaderContainer = styled.header`
@@ -25,7 +25,6 @@ export const HeaderContainer = styled.header`
 `
 
 export const EditArea = styled.div`
-  display: flex;
   display: flex;
   flex-direction: column;
   width: 100%;

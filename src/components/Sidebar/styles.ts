@@ -16,16 +16,7 @@ export const DocumentsContainer = styled.section`
   transform: translateX(${(props) => (props.hidden ? '-250px' : '0px')});
   transition: 0.3s;
 
-  h1 {
-    font-size: 0.94rem;
-    font-family: 'Commissioner', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-align: left;
-  }
-
   h2 {
-    margin-top: 1.8rem;
     font-size: 0.94rem;
     text-transform: uppercase;
     font-weight: 500;
@@ -39,6 +30,23 @@ export const DocumentsContainer = styled.section`
       transform: translateX(-250px)
       overflow: hidden;
     `}
+`
+
+export const TitleContainer = styled.div`
+  display: flex;
+
+  h1 {
+    font-size: 0.94rem;
+    margin-bottom: 1.8rem;
+    font-family: 'Commissioner', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: left;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `
 
 export const DocumentsContent = styled.div`

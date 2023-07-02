@@ -6,6 +6,11 @@ export const FileEditorContainer = styled.div`
   width: 100%;
 `
 
+export const PreviewBarContainer = styled.div`
+  display: flex;
+  position: sticky;
+`
+
 export const PreviewContainer = styled.div`
   display: flex;
   height: 100%;

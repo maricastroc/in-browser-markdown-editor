@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const PreviewBarContainer = styled.div`
   display: flex;
   padding: 0 1rem;
+  position: sticky;
   align-items: center;
   width: 100%;
   height: 2.625rem;
@@ -16,8 +17,13 @@ export const PreviewBarContainer = styled.div`
   }
 
   svg {
+    cursor: pointer;
     color: ${(props) => props.theme['tertiary-text']};
     font-size: 22px;
+
+    &:hover {
+      color: ${(props) => props.theme['orange-500']};
+    }
   }
 `
 

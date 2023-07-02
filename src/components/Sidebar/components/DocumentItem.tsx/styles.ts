@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const DocumentItemContainer = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -8,6 +9,12 @@ export const DocumentItemContainer = styled.div`
   svg {
     font-size: 20px;
     color: ${(props) => props.theme['primary-text']};
+  }
+
+  &:hover {
+    p {
+      color: ${(props) => props.theme['orange-500']};
+    }
   }
 `
 

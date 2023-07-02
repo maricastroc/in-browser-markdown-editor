@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const ConverterContainer = styled.div`
   padding: 1.5rem;
+  min-height: 100%;
+  width: 100%;
 
   h1 {
     color: ${(props) => props.theme['secondary-text']};
@@ -50,6 +52,14 @@ export const ConverterContainer = styled.div`
     color: ${(props) => props.theme['orange-500']};
   }
 
+  a {
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    color: ${(props) => props.theme['textarea-bg']};
+  }
+
   p {
     margin-top: 1.25rem;
     font-size: 0.875rem;
@@ -57,6 +67,10 @@ export const ConverterContainer = styled.div`
     font-weight: 400;
     color: ${(props) => props.theme['textarea-bg']};
     line-height: 180%;
+  }
+
+  img {
+    width: clamp(270px, 85vw, 550px);
   }
 
   ol,
@@ -122,6 +136,18 @@ export const ConverterContainer = styled.div`
       white-space: pre-wrap;
       width: 70%;
       line-height: 200%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    img {
+      width: clamp(200px, 45vw, 350px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      width: clamp(200px, 45vw, 650px);
     }
   }
 `

@@ -18,6 +18,10 @@ export const Content = styled(Dialog.Content)`
   transform: translate(-50%, -50%);
   width: clamp(320px, 80vw, 340px);
   border-radius: 4px;
+
+  @media (min-width: 768px) {
+    width: clamp(320px, 80vw, 358px);
+  }
 `
 
 export const Title = styled(Dialog.Title)`
@@ -63,7 +67,7 @@ export const CloseButton = styled(Dialog.Close)`
   }
 `
 
-export const ConfirmButton = styled.button`
+export const ConfirmButton = styled(Dialog.Close)`
   margin-top: 1rem;
   color: ${(props) => props.theme['primary-text']};
   width: 100%;
@@ -72,5 +76,10 @@ export const ConfirmButton = styled.button`
   cursor: pointer;
   background-color: ${(props) => props.theme['orange-500']};
   border-radius: 4px;
-  border: 0;
+  border: none;
+
+  &:hover {
+    background-color: ${(props) => props.theme['orange-300']};
+    transition: all 200ms;
+  }
 `

@@ -46,34 +46,15 @@ export function ActionsContextProvider({
     }
   })
 
-  const [activeDocument, setActiveDocument] = useState<NewDocumentProps>()
-
-  useEffect(() => {
-    try {
-      const storedDocuments = localStorage.getItem('documents')
-      const parsedDocuments = storedDocuments
-        ? JSON.parse(storedDocuments)
-        : defaultDocuments
-      setDocuments(parsedDocuments)
-      console.log(parsedDocuments)
-    } catch (error) {
-      console.error('Error parsing documents:', error)
-      setDocuments(defaultDocuments)
-    }
-  }, [])
-
-  useEffect(() => {
-    try {
-      const storedActiveDocument = localStorage.getItem('activeDocument')
-      const parsedActiveDocument = storedActiveDocument
-        ? JSON.parse(storedActiveDocument)
-        : defaultDocuments[0]
-      setActiveDocument(parsedActiveDocument)
-    } catch (error) {
-      console.error('Error parsing active document:', error)
-      setActiveDocument(defaultDocuments[0])
-    }
-  }, [])
+  const [activeDocument, setActiveDocument] = useState<
+    NewDocumentProps | undefined
+  >(
+    JSON.parse(
+      localStorage.getItem('activeDocument') === 'undefined'
+        ? '{}'
+        : localStorage.getItem('activeDocument') || 'null',
+    ) || defaultDocuments[0],
+  )
 
   useEffect(() => {
     localStorage.setItem('documents', JSON.stringify(documents))

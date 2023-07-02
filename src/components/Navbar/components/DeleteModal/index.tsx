@@ -10,6 +10,8 @@ import {
 import { X } from 'phosphor-react'
 import { useContext } from 'react'
 import { ActionsContext } from '../../../../contexts/ActionsContext'
+import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
 
 interface DeleteModalProps {
   name: string | undefined
@@ -17,6 +19,12 @@ interface DeleteModalProps {
 
 export function DeleteModal({ name }: DeleteModalProps) {
   const { deleteDocument } = useContext(ActionsContext)
+
+  function handleDeleteDocument() {
+    deleteDocument()
+    toast.success('Document successfully deleted!')
+  }
+
   return (
     <Dialog.Portal>
       <Overlay className="DialogOverlay" />
@@ -25,14 +33,13 @@ export function DeleteModal({ name }: DeleteModalProps) {
           <X size={18} alt="Cancel remove transaction" />
         </CloseButton>
         <Title className="DialogTitle">Delete this Document?</Title>
-        <Description
-          className="DialogDescription"
-          onClick={() => deleteDocument()}
-        >
+        <Description className="DialogDescription">
           {`Are you sure you want to delete the '${name}' document
           contents? This action cannot be reversed.`}
         </Description>
-        <ConfirmButton>Confirm & Delete</ConfirmButton>
+        <ConfirmButton onClick={handleDeleteDocument}>
+          Confirm & Delete
+        </ConfirmButton>
       </Content>
     </Dialog.Portal>
   )

@@ -7,6 +7,7 @@ import {
   DocumentsContent,
   NewDocumentBtn,
   ThemeButtonContainer,
+  TitleContainer,
 } from './styles'
 import { useContext } from 'react'
 import * as Switch from '@radix-ui/react-switch'
@@ -20,7 +21,9 @@ export function Sidebar() {
   return (
     <DocumentsContainer hidden={!openSidebar}>
       <DocumentsContent>
-        <h1>Markdown</h1>
+        <TitleContainer>
+          <h1>Markdown</h1>
+        </TitleContainer>
         <h2>My documents</h2>
         <NewDocumentBtn onClick={() => createDocument()}>
           <p>+ New Document</p>

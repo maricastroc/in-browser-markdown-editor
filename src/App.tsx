@@ -20,7 +20,6 @@ export function App() {
 
 function InnerApp() {
   const { darkTheme } = useContext(SettingsContext)
-  console.log(darkTheme)
 
   return (
     <ThemeProvider theme={darkTheme ? defaultTheme : lightTheme}>
