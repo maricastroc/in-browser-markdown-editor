@@ -20,6 +20,10 @@ export const TextAreaContainer = styled.div`
     &:focus {
       box-shadow: none;
     }
+
+    @media (min-width: 768px) {
+      overflow: hidden;
+    }
   }
 
   @media (min-width: 768px) {
