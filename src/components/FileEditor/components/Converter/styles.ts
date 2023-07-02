@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const ConverterContainer = styled.div`
-  padding: 1.5rem 1.5rem 2rem;
-  height: 100%;
+  padding: 1.5rem;
 
   h1 {
     color: ${(props) => props.theme['secondary-text']};

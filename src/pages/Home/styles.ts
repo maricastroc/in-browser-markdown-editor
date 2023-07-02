@@ -2,16 +2,17 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100%;
   width: 100%;
   background-color: ${(props) => props.theme['primary-bg']};
-  overflow-x: hidden;
   align-items: stretch;
 `
 
 export const HomeContent = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
 `
 
 export const HeaderContainer = styled.header`
@@ -28,7 +29,6 @@ export const EditArea = styled.div`
   display: flex;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme['primary-bg']};
   transition: transform 0.3s;

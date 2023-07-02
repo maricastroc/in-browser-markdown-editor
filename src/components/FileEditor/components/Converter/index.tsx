@@ -7,8 +7,11 @@ export function Converter() {
   const { activeDocument } = useContext(ActionsContext)
 
   return (
-    <ConverterContainer>
-      <ReactMarkdown>{activeDocument!.content}</ReactMarkdown>
-    </ConverterContainer>
+    activeDocument &&
+    activeDocument.content !== undefined && (
+      <ConverterContainer>
+        <ReactMarkdown>{activeDocument!.content}</ReactMarkdown>
+      </ConverterContainer>
+    )
   )
 }
