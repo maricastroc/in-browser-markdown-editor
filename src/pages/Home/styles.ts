@@ -17,7 +17,7 @@ export const HomeContent = styled.div`
 
 export const HeaderContainer = styled.header`
   display: flex;
-  position: fixed;
+  position: sticky;
   flex-direction: column;
   width: 100%;
   z-index: 10;
@@ -25,7 +25,6 @@ export const HeaderContainer = styled.header`
 `
 
 export const EditArea = styled.div`
-  margin-top: 6.8rem;
   display: flex;
   display: flex;
   flex-direction: column;

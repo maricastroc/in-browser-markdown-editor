@@ -10,12 +10,10 @@ export function TextArea() {
   }
 
   return (
-    <TextAreaContainer>
-      <textarea
-        value={activeDocument?.content}
-        onChange={handleChangeActiveDocument}
-        spellCheck={false}
-      ></textarea>
-    </TextAreaContainer>
+    <TextAreaContainer
+      value={activeDocument?.content}
+      onChange={handleChangeActiveDocument}
+      spellCheck={false}
+    ></TextAreaContainer>
   )
 }
