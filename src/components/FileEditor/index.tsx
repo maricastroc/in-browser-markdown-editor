@@ -1,30 +1,43 @@
-import { ConverterContainer, TextContainer } from './styles'
-import { ChangeEvent, useContext } from 'react'
-import ReactMarkdown from 'react-markdown'
+import {
+  PreviewContainer,
+  FileEditorContainer,
+  NoPreviewContainer,
+} from './styles'
+import { useContext, useEffect, useState } from 'react'
 import { SettingsContext } from '../../contexts/SettingsContext'
 import { ActionsContext } from '../../contexts/ActionsContext'
+import { TextArea } from './components/TextArea'
+import { Converter } from './components/Converter'
 
 export function FileEditor() {
   const { preview, handleCloseSidebar } = useContext(SettingsContext)
-  const { activeDocument, onDocumentContentChange } = useContext(ActionsContext)
+  const { activeDocument } = useContext(ActionsContext)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  function handleChangeActiveDocument(ev: ChangeEvent<HTMLTextAreaElement>) {
-    onDocumentContentChange(ev)
-  }
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
-    <TextContainer onClick={() => handleCloseSidebar()}>
+    <FileEditorContainer onClick={() => handleCloseSidebar()}>
       {preview && activeDocument?.content !== 'undefined' ? (
-        <ConverterContainer>
-          <ReactMarkdown>{activeDocument!.content}</ReactMarkdown>
-        </ConverterContainer>
+        <PreviewContainer>
+          <Converter />
+        </PreviewContainer>
       ) : (
-        <textarea
-          value={activeDocument?.content}
-          onChange={handleChangeActiveDocument}
-          spellCheck={false}
-        ></textarea>
+        <NoPreviewContainer>
+          <TextArea />
+          {windowWidth > 768 && <Converter />}
+        </NoPreviewContainer>
       )}
-    </TextContainer>
+    </FileEditorContainer>
   )
 }

@@ -6,17 +6,17 @@ export const PreviewBarContainer = styled.div`
   align-items: center;
   padding: 0.875rem 1rem;
   width: 100%;
-  background-color: ${(props) => props.theme['base-900']};
+  background-color: ${(props) => props.theme['secondary-bg']};
 
   p {
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.875rem;
   }
 
   svg {
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
     font-size: 25px;
   }
 `

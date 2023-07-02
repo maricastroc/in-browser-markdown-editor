@@ -7,7 +7,7 @@ export const DocumentItemContainer = styled.div`
 
   svg {
     font-size: 20px;
-    color: ${(props) => props.theme['base-font']};
+    color: ${(props) => props.theme['primary-text']};
   }
 `
 
@@ -18,7 +18,7 @@ export const TextContainer = styled.div`
 
   span {
     font-size: 0.812rem;
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
   }
 
   p {

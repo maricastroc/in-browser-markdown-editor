@@ -4,7 +4,7 @@ export const DocumentsContainer = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.7rem;
-  background-color: ${(props) => props.theme['base-sidebar']};
+  background-color: ${(props) => props.theme['sidebar-bg']};
   min-height: 100%;
   width: 250px;
   position: fixed;
@@ -30,7 +30,7 @@ export const DocumentsContainer = styled.section`
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1.3px;
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
   }
 
   ${(props) =>
@@ -58,7 +58,7 @@ export const NewDocumentBtn = styled.button`
   cursor: pointer;
 
   p {
-    color: ${(props) => props.theme['base-font']};
+    color: ${(props) => props.theme['primary-text']};
   }
 `
 
@@ -78,7 +78,7 @@ export const ThemeButtonContainer = styled.div`
     cursor: pointer;
     width: 48px;
     height: 24px;
-    background-color: ${(props) => props.theme['base-600']};
+    background-color: ${(props) => props.theme['switch-bg']};
     border-radius: 9999px;
     border: none;
     position: relative;
@@ -89,7 +89,7 @@ export const ThemeButtonContainer = styled.div`
     }
 
     &[data-state='checked'] {
-      background-color: ${(props) => props.theme['base-600']};
+      background-color: ${(props) => props.theme['switch-bg']};
     }
   }
 
@@ -97,7 +97,7 @@ export const ThemeButtonContainer = styled.div`
     display: block;
     width: 12px;
     height: 12px;
-    background-color: ${(props) => props.theme['base-font']};
+    background-color: ${(props) => props.theme['primary-text']};
     border-radius: 9999px;
     transition: transform 100ms;
     transform: translateX(2px);
@@ -110,10 +110,10 @@ export const ThemeButtonContainer = styled.div`
 
   svg {
     font-size: 21px;
-    color: ${(props) => props.theme['base-600']};
+    color: ${(props) => props.theme['switch-bg']};
 
     &.active {
-      color: ${(props) => props.theme['base-font']};
+      color: ${(props) => props.theme['primary-text']};
     }
   }
 `

@@ -1,9 +1,9 @@
 import { FileEditor } from '../../components/FileEditor'
-import { Header } from '../../components/Header'
+import { Navbar } from '../../components/Navbar'
 import { Sidebar } from '../../components/Sidebar'
 import { PreviewBar } from '../../components/PreviewBar'
 import { SettingsContext } from '../../contexts/SettingsContext'
-import { EditArea, HomeContainer } from './styles'
+import { EditArea, HeaderContainer, HomeContainer, HomeContent } from './styles'
 import { useContext } from 'react'
 
 export function Home() {
@@ -11,11 +11,15 @@ export function Home() {
   return (
     <HomeContainer>
       <Sidebar />
-      <EditArea className={openSidebar ? 'moving' : 'backing'}>
-        <Header />
-        <PreviewBar />
-        <FileEditor />
-      </EditArea>
+      <HomeContent>
+        <HeaderContainer>
+          <Navbar />
+          <PreviewBar />
+        </HeaderContainer>
+        <EditArea className={openSidebar ? 'moving' : 'backing'}>
+          <FileEditor />
+        </EditArea>
+      </HomeContent>
     </HomeContainer>
   )
 }

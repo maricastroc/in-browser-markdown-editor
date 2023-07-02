@@ -15,16 +15,14 @@ import { Sun, Moon } from 'phosphor-react'
 export function Sidebar() {
   const { openSidebar, darkTheme, handleSetDarkTheme } =
     useContext(SettingsContext)
-  const { documents } = useContext(ActionsContext)
-
-  console.log(documents)
+  const { documents, createDocument } = useContext(ActionsContext)
 
   return (
     <DocumentsContainer hidden={!openSidebar}>
       <DocumentsContent>
         <h1>Markdown</h1>
         <h2>My documents</h2>
-        <NewDocumentBtn>
+        <NewDocumentBtn onClick={() => createDocument()}>
           <p>+ New Document</p>
         </NewDocumentBtn>
         <DocumentItemsContainer>

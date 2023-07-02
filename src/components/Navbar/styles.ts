@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+export const NavbarContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: ${(props) => props.theme['base-800']};
+  background-color: ${(props) => props.theme['tertiary-bg']};
 `
 
 const BaseButton = styled.button`
@@ -17,7 +17,7 @@ const BaseButton = styled.button`
 
   svg {
     font-size: 28px;
-    color: ${(props) => props.theme['base-font']};
+    color: ${(props) => props.theme['primary-text']};
   }
 
   &:focus {
@@ -26,7 +26,7 @@ const BaseButton = styled.button`
 `
 
 export const OpenSidebar = styled(BaseButton)`
-  background-color: ${(props) => props.theme['base-700']};
+  background-color: ${(props) => props.theme['sidebar-btn-bg']};
 `
 
 export const CloseSidebar = styled(BaseButton)`
@@ -40,20 +40,20 @@ export const FileContainer = styled.div`
 
   svg {
     font-size: 20px;
-    color: ${(props) => props.theme['base-font']};
+    color: ${(props) => props.theme['primary-text']};
   }
 
   label {
     font-size: 0.8rem;
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
   }
 
   input {
     font-size: 0.94rem;
-    background-color: ${(props) => props.theme['base-800']};
+    background-color: ${(props) => props.theme['tertiary-bg']};
     border: none;
-    width: 7rem;
-    color: ${(props) => props.theme['base-font']};
+    width: 6rem;
+    color: ${(props) => props.theme['primary-text']};
   }
 
   > div {
@@ -63,6 +63,12 @@ export const FileContainer = styled.div`
   }
 `
 
+export const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`
+
 export const IconsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -70,7 +76,7 @@ export const IconsContainer = styled.div`
 
   .trash {
     font-size: 22px;
-    color: ${(props) => props.theme['base-500']};
+    color: ${(props) => props.theme['tertiary-text']};
   }
 `
 
@@ -86,6 +92,6 @@ export const SaveButton = styled.button`
 
   svg {
     font-size: 22px;
-    color: ${(props) => props.theme['base-font']};
+    color: ${(props) => props.theme['primary-text']};
   }
 `
