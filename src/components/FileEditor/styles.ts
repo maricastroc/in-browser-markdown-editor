@@ -39,3 +39,15 @@ export const NoPreviewContainer = styled.div`
     grid-template-columns: 1fr 1fr;
   }
 `
+
+export const EmptyArea = styled.div`
+  display: flex;
+  padding: 1.5rem;
+
+  p {
+    color: ${(props) => props.theme['textarea-bg']};
+    font-size: 0.875rem;
+    font-family: 'Roboto Mono', serif;
+    line-height: 180%;
+  }
+`

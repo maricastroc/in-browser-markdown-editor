@@ -17,6 +17,7 @@ export function Sidebar() {
   const { openSidebar, darkTheme, handleSetDarkTheme } =
     useContext(SettingsContext)
   const { documents, createDocument } = useContext(ActionsContext)
+  const { handleSetPreviewWithValue } = useContext(SettingsContext)
 
   return (
     <DocumentsContainer hidden={!openSidebar}>
@@ -25,7 +26,12 @@ export function Sidebar() {
           <h1>Markdown</h1>
         </TitleContainer>
         <h2>My documents</h2>
-        <NewDocumentBtn onClick={() => createDocument()}>
+        <NewDocumentBtn
+          onClick={() => {
+            createDocument()
+            handleSetPreviewWithValue(false)
+          }}
+        >
           <p>+ New Document</p>
         </NewDocumentBtn>
         <DocumentItemsContainer>

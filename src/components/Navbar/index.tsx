@@ -21,7 +21,7 @@ import { toast } from 'react-toastify'
 export function Navbar() {
   const { handleSetOpenSidebar, openSidebar } = useContext(SettingsContext)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const { activeDocument, saveDocument, onDocumentNameChange } =
+  const { activeDocument, saveDocument, onDocumentNameChange, documents } =
     useContext(ActionsContext)
 
   function handleDocumentNameChange(ev: ChangeEvent<HTMLInputElement>) {
@@ -62,29 +62,33 @@ export function Navbar() {
             <h2>Markdown</h2>
             <span></span>
           </TitleContainer>
-          <FileContainer>
-            <File />
-            <div>
-              <label htmlFor="">Document Name</label>
-              <input
-                value={activeDocument?.name}
-                onChange={handleDocumentNameChange}
-              />
-            </div>
-          </FileContainer>
+          {documents.length !== 0 && (
+            <FileContainer>
+              <File />
+              <div>
+                <label htmlFor="">Document Name</label>
+                <input
+                  value={activeDocument?.name}
+                  onChange={handleDocumentNameChange}
+                />
+              </div>
+            </FileContainer>
+          )}
         </InfoContainer>
-        <IconsContainer>
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <Trash className="trash" />
-            </Dialog.Trigger>
-            <DeleteModal name={activeDocument?.name} />
-          </Dialog.Root>
-          <SaveButton onClick={handleSaveDocument}>
-            <FloppyDisk />
-            {windowWidth > 768 && <p>Save Changes</p>}
-          </SaveButton>
-        </IconsContainer>
+        {documents.length !== 0 && (
+          <IconsContainer>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <Trash className="trash" />
+              </Dialog.Trigger>
+              <DeleteModal name={activeDocument?.name} />
+            </Dialog.Root>
+            <SaveButton onClick={handleSaveDocument}>
+              <FloppyDisk />
+              {windowWidth > 768 && <p>Save Changes</p>}
+            </SaveButton>
+          </IconsContainer>
+        )}
       </NavbarContainer>
       <StyledToastContainer position="top-right" autoClose={5000} />
     </NavbarWrapper>

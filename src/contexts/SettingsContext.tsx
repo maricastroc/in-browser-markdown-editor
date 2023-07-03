@@ -8,6 +8,7 @@ interface SettingsContextData {
   handleCloseSidebar: () => void
   darkTheme: boolean
   handleSetDarkTheme: () => void
+  handleSetPreviewWithValue: (value: boolean) => void
 }
 
 export const SettingsContext = createContext<SettingsContextData>(
@@ -41,6 +42,10 @@ export function SettingsContextProvider({
     setDarkTheme((prev) => !prev)
   }
 
+  const handleSetPreviewWithValue = (value: boolean) => {
+    setPreview(value)
+  }
+
   const SettingsContextValue: SettingsContextData = {
     preview,
     handleSetPreview,
@@ -49,6 +54,7 @@ export function SettingsContextProvider({
     darkTheme,
     handleSetDarkTheme,
     handleCloseSidebar,
+    handleSetPreviewWithValue,
   }
 
   return (
