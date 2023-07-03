@@ -30,7 +30,7 @@ export function DeleteModal({ name }: DeleteModalProps) {
       <Overlay className="DialogOverlay" />
       <Content className="DialogContent">
         <CloseButton>
-          <X size={18} alt="Cancel remove transaction" />
+          <X size={18} alt="Delete document" />
         </CloseButton>
         <Title className="DialogTitle">Delete this Document?</Title>
         <Description className="DialogDescription">
